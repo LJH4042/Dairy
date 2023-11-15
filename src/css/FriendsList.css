@@ -1,0 +1,23 @@
+.friendList h3{
+    margin-left: 40px;
+    font-family:'Courier New', Courier, monospace
+}
+
+.friendList ul{
+    list-style: none;
+}
+
+.friendList li{
+    display: flex
+}
+
+.friendList li > h3{
+    margin-left: 10px;
+    line-height: 10px;
+}
+
+.friendList img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}

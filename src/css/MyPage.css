@@ -1,0 +1,29 @@
+.myPage{
+    margin: 150px auto;
+    width: 800px;
+}
+
+.myPageTitle{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 40px;
+    letter-spacing: 3px;
+    font-family:'Courier New', Courier, monospace
+}
+
+.myPageSubTitle{
+    text-align: center;
+    margin: 40px 0px 50px 0px;
+}
+
+.mainGroup{
+    display: flex;
+}
+
+.groupComp{
+    width: 550px;
+}
+
+.friendList{
+    width: 200px;
+}

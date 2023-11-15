@@ -1,0 +1,51 @@
+.registerForm{
+    text-align: center;
+    margin: 150px auto;
+    padding: 40px 60px 60px 60px;
+    width: 350px;
+    border: 2px solid cornflowerblue;
+    border-radius: 10px;
+}
+
+.registerForm h1{
+    font-size: 40px;
+    letter-spacing: 5px;
+    font-family:'Courier New', Courier, monospace
+}
+
+.registerForm p{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.registerForm input{
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.registerForm button{
+    margin-bottom: 30px;
+    padding: 10px 100px;
+    font-size: 20px;
+    font-weight: bolder;
+    border: 0px;
+    border-radius: 10px;
+    background-color:cornflowerblue;
+    color: white;
+}
+
+.registerForm button:hover{
+    background-color:rgb(74, 108, 171);
+}
+
+.registerForm a{
+    color:cornflowerblue;
+    text-decoration: underline;
+}
+
+.registerForm a:hover{
+    color:rgb(74, 108, 171);
+    text-decoration: underline;
+}
