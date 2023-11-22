@@ -3,3 +3,30 @@
     width: 800px;
     text-align: center;
 }
+
+.homeTitle{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 40px;
+    letter-spacing: 3px;
+    font-family:'Courier New', Courier, monospace
+}
+
+.homeSubTitle{
+    text-align: center;
+    margin: 40px 0px 50px 0px;
+}
+
+.homeTitleGroup{
+    margin-bottom: 50px;
+}
+
+h2{
+    font-family:'Courier New', Courier, monospace
+}
+
+.homeContainer img{
+    width: 150px;
+    height: 150px;
+    margin-left: 320px;
+}

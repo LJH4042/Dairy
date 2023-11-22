@@ -33,12 +33,12 @@ function Dairy({id, title, date, name, content, deleteDairy, editDairy}){
                         <textarea className="editTextArea" value={editContent} onChange={handleEditContent} placeholder="Content" required /> :
                         <p>{content}</p>}
                 </div>
-            </div>
-            <div className="buttonContainer">
-                {editBoolen ? null : <button className="dairyButton" onClick={clickEditBoolen}>수정하기</button> }
-                {editBoolen ? null : <button className="dairyButton" onClick={handleDelete}>삭제하기</button> }
-                {editBoolen ? <button className="dairyButton" onClick={handleEdit}>수정완료</button> : null }
-                {editBoolen ? <button className="dairyButton" onClick={handleDelete}>삭제하기</button> : null}
+                <div className="buttonContainer">
+                    {editBoolen ? null : <button className="dairyButton" onClick={clickEditBoolen}>수정</button> }
+                    {editBoolen ? null : <button className="dairyButton" onClick={handleDelete}>삭제</button> }
+                    {editBoolen ? <button className="dairyButton" onClick={handleEdit}>완료</button> : null }
+                    {editBoolen ? <button className="dairyButton" onClick={handleDelete}>삭제</button> : null}
+                </div>
             </div>
         </div>
     )

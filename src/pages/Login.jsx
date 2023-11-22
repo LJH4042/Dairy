@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 
 function Login(){
-    const [loginState, setLoginState] = useState({
-        loginID: "",
-        loginPWD: ""
+    const [state, setState] = useState({
+        idValue: "",
+        passwordValue: ""
     })
 
     const handleLoginState = (event) => {
-        setLoginState({
-            ...loginState, //loginState 객체를 나열 ([loginID, loginPWD]로 나열)
+        setState({
+            ...state, //loginState 객체를 나열 ([loginID, loginPWD]로 나열)
             [event.target.name]: event.target.value //객체 이름을 찾아 그 값을 지정
         })
     }
@@ -25,22 +25,22 @@ function Login(){
 
     const handleLoginSubmit = (event) => {
         event.preventDefault()
-        if(realID == loginState.loginID){
-            if(realPW == loginState.loginPWD){
+        if(realID == state.idValue){
+            if(realPW == state.passwordValue){
                 alert("로그인에 성공하였습니다.")
                 goToMyPage()
             }else{
                 alert("로그인 혹은 비밀번호가 일치하지 않습니다.")
-                setLoginState({
-                    loginID: "",
-                    loginPWD: ""
+                setState({
+                    idValue: "",
+                    passwordValue: ""
                 })
             }
         }else{
             alert("로그인 혹은 비밀번호가 일치하지 않습니다.")
-            setLoginState({
-                loginID: "",
-                loginPWD: ""
+            setState({
+                idValue: "",
+                passwordValue: ""
             })
         }
 
@@ -50,12 +50,17 @@ function Login(){
                 id: state.idValue,
                 password: state.passwordValue
             }),
-        }).then(response => {
-            if(response.message === 'SUCCESS'){
-                window.localStorage.setItem('token', response.access_token);
-                alert("로그인 되었습니다.")
+        }).then(response => response.json())
+        .then(response => {
+            if(response.token){
+                alert("로그인에 성공하였습니다.")
+                goToMyPage()
             }else{
-                alert("아이디 혹은 비밀번호가 일치하지 않습니다.")
+                alert("로그인 혹은 비밀번호가 일치하지 않습니다.")
+                setLoginState({
+                    idValue: "",
+                    passwordValue: ""
+                })
             }
         })*/
     }
@@ -71,10 +76,10 @@ function Login(){
                     <hr />
                     <p>use your account</p>
                     <div>
-                        <input type="text" name="loginID" value={loginState.loginID} onChange={handleLoginState} required placeholder="ID" />
+                        <input type="text" name="idValue" value={state.idValue} onChange={handleLoginState} required placeholder="ID" />
                     </div>
                     <div>
-                        <input type="password" name="loginPWD" value={loginState.loginPWD} onChange={handleLoginState} required placeholder="PASSWORD" />
+                        <input type="password" name="passwordValue" value={state.passwordValue} onChange={handleLoginState} required placeholder="PASSWORD" />
                     </div>
                     <button type="submit">Login</button>
                     <hr />

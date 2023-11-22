@@ -36,15 +36,19 @@ function Register(){
                 name: state.nameValue,
                 id: state.idValue,
                 password: state.passwordValue
-            })
-        }).then(response => response.json()) //server에서 보내준 response를 object 형태로 변환
-        .then(result => {
+            }),
+            headers: {
+                'Content-Type' : 'application/json',
+                'Accept' : 'application/json'
+            }
+        }).then(response => response.json())
+        .then(response => {
             if(state.passwordValue !== state.passwordValue2){
                 alert("비밀번호가 일치하지 않습니다.")
             }else{
                 alert("회원가입 되었습니다.")
                 goToLogin()
-                console.log('결과: ', result) //object로 변환한 response를 console.log에 출력
+                console.log(response)
             }
         })*/
     }
