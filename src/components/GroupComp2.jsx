@@ -7,8 +7,8 @@ function GroupComp2(){
         <div className="groupContainer">
             <div className="topGroupConp">
                 <div>
-                    <img src={image} title="김XX" />
-                    <img src={image} title="이XX" />
+                    <img src={image} title="여X철" />
+                    <img src={image} title="이X혁" />
                 </div>
                 <div className="groupDate2">
                     <h3>생성 날짜: 20XX-XX-XX</h3>

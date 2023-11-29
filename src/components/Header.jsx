@@ -13,7 +13,7 @@ function Header(){
 
     return(
         <div className="wrapper">
-            <h1 className="title" onClick={goToHome}>Our Dairy</h1>
+            <h1 className="title" onClick={goToHome}>Our Diary</h1>
             {false ?
                 <nav>
                     <p className="userName">username</p>

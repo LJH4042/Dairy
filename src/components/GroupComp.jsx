@@ -11,9 +11,9 @@ function GroupComp(){
         <div className="groupContainer" onClick={goToDairyList}>
             <div className="topGroupConp">
                 <div>
-                    <img src={image} title="김XX" />
-                    <img src={image} title="이XX" />
-                    <img src={image} title="박XX" />
+                    <img src={image} title="여X철" />
+                    <img src={image} title="이X혁" />
+                    <img src={image} title="이X호" />
                 </div>
                 <div className="groupDate">
                     <h3>생성 날짜: 20XX-XX-XX</h3>

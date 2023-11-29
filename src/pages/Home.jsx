@@ -28,7 +28,7 @@ function Home(){
             </div>
             <div className="homeContainer">
                 <div className="homeTitleGroup">
-                    <h1 className="homeTitle">Our Dairy</h1>
+                    <h1 className="homeTitle">Our Diary</h1>
                     <p className="homeSubTitle">-Welcome Your Story-</p>
                     <hr />
                 </div>

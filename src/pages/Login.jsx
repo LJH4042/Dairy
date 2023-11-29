@@ -8,6 +8,7 @@ function Login(){
         idValue: "",
         passwordValue: ""
     })
+    const [loginCheck, setLoginCheck] = useState(false)
 
     const handleLoginState = (event) => {
         setState({
@@ -20,12 +21,40 @@ function Login(){
     const goToRegister = () => {navigate("/Register")}
     const goToMyPage = () => {navigate("/MyPage")}
 
-    const realID = "jungbu" //더미 ID
-    const realPW = "1234" //더미 패스워드
+    /*const realID = "jungbu" //더미 ID
+    const realPW = "1234" //더미 패스워드*/
 
-    const handleLoginSubmit = (event) => {
+    const handleLoginSubmit = async (event) => {
         event.preventDefault()
-        if(realID == state.idValue){
+        await new Promise((r) => setTimeout(r, 1000))
+
+        const response = await fetch("/auth/signin", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                username: state.idValue,
+                password: state.passwordValue
+            }),
+            credential: 'include'
+        })
+        const result = await response.json()
+
+        if(response.status === 200){
+            setLoginCheck(false);
+            sessionStorage.setItem("token", result.accessToken)
+            sessionStorage.setItem("username", result.username)
+            alert("로그인에 성공하였습니다.")
+            goToMyPage()
+        }else{
+            setLoginCheck(true)
+            alert("로그인 혹은 비밀번호가 일치하지 않습니다.")
+            setState({
+                idValue: "",
+                passwordValue: ""
+            })
+        }
+
+        /*if(realID == state.idValue){
             if(realPW == state.passwordValue){
                 alert("로그인에 성공하였습니다.")
                 goToMyPage()
@@ -42,22 +71,23 @@ function Login(){
                 idValue: "",
                 passwordValue: ""
             })
-        }
+        }*/
 
-        /*fetch("http://localhost:5000/Login", {
+        /*fetch("http://localhost:5000/auth/signin", {
             method: 'POST',
             body: JSON.stringify({
-                id: state.idValue,
+                username: state.idValue,
                 password: state.passwordValue
             }),
         }).then(response => response.json())
-        .then(response => {
-            if(response.token){
+        .then((result) => {
+            if(result.accessToken){
+                localStorage.setItem('token', result.accessToken)
                 alert("로그인에 성공하였습니다.")
                 goToMyPage()
             }else{
                 alert("로그인 혹은 비밀번호가 일치하지 않습니다.")
-                setLoginState({
+                setState({
                     idValue: "",
                     passwordValue: ""
                 })

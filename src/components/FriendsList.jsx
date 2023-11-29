@@ -9,11 +9,15 @@ function FriendsList(){
             <ul>
                 <li>
                     <img src={image} />
-                    <h3>이XX</h3>
+                    <h3>여X철</h3>
                 </li>
                 <li>
                     <img src={image} />
-                    <h3>박XX</h3>
+                    <h3>이X혁</h3>
+                </li>
+                <li>
+                    <img src={image} />
+                    <h3>이X호</h3>
                 </li>
             </ul>
         </div>

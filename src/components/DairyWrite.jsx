@@ -24,6 +24,15 @@ function DairyWrite({addDairy}){ //DairyList 사이에서 addDairy 함수를 전
             name: "",
             content: ""
         })
+        /*fetch("api", {
+            method: "POST",
+            body: JSON.stringify({
+                title: writeState.title,
+                name: writeState.name,
+                content: writeState.content
+            })
+        }).then(response => response.json())
+        .then((result) => addDairy(writeState.title, writeState.name ,writeState.content))*/
     }
 
     return(
