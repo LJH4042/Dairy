@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import { createAxios } from "../api/axiosInstance";
 
 function Register(){
-    const [state, setState] = useState({
+    const [userState, setUserState] = useState({
         nameValue: "",
         idValue: "",
         passwordValue: "",
@@ -13,7 +13,7 @@ function Register(){
     })
 
     const handleRegisterState = (event) => {
-        setState({
+        setUserState({
             ...state,
             [event.target.name]: event.target.value
         })
@@ -25,14 +25,13 @@ function Register(){
     const handleRegisterSubmit = async (event) => {
         event.preventDefault()
 
-        if(state.passwordValue !== state.passwordValue2){
+        if(userState.passwordValue !== userState.passwordValue2){
             alert("비밀번호가 일치하지 않습니다.")
         }else{
             try{
                 const response = await createAxios.post("/auth/signup", {
-                    name: state.nameValue,
-                    username: state.idValue,
-                    password: state.passwordValue
+                    username: userState.idValue,
+                    password: userState.passwordValue
                 })
                 if (response.status === 200){
                     alert("회원가입 되었습니다.")
@@ -57,16 +56,16 @@ function Register(){
                     <hr />
                     <p>make your account</p>
                     <div>
-                        <input type="text" name="nameValue" value={state.nameValue} onChange={handleRegisterState} required placeholder="Name" />
+                        <input type="text" name="nameValue" value={userState.nameValue} onChange={handleRegisterState} required placeholder="Name" />
                     </div>
                     <div>
-                        <input type="text" name="idValue" value={state.idValue} onChange={handleRegisterState} required placeholder="ID" />
+                        <input type="text" name="idValue" value={userState.idValue} onChange={handleRegisterState} required placeholder="ID" />
                     </div>
                     <div>
-                        <input type="password" name="passwordValue" value={state.passwordValue} onChange={handleRegisterState} required placeholder="PASSWORD" />
+                        <input type="password" name="passwordValue" value={userState.passwordValue} onChange={handleRegisterState} required placeholder="PASSWORD" />
                     </div>
                     <div>
-                        <input type="password" name="passwordValue2" value={state.passwordValue2} onChange={handleRegisterState} required placeholder="PASSWORD AGAIN" />
+                        <input type="password" name="passwordValue2" value={userState.passwordValue2} onChange={handleRegisterState} required placeholder="PASSWORD AGAIN" />
                     </div>
                     <button type="submit">Register</button>
                     <hr />
