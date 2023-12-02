@@ -13,7 +13,7 @@ function Login(){
 
     const handleLoginState = (event) => {
         setUserState({
-            ...state, //loginState 객체를 나열 ([loginID, loginPWD]로 나열)
+            ...userState, //loginState 객체를 나열 ([loginID, loginPWD]로 나열)
             [event.target.name]: event.target.value //객체 이름을 찾아 그 값을 지정
         })
     }

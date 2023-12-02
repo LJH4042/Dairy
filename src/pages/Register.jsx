@@ -14,7 +14,7 @@ function Register(){
 
     const handleRegisterState = (event) => {
         setUserState({
-            ...state,
+            ...userState,
             [event.target.name]: event.target.value
         })
     }
