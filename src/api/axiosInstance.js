@@ -7,6 +7,5 @@ export const createAxios = axios.create({
     headers: {
         'Access-Control-Allow-Origin': `http://localhost:5000`,
         'Content-Type': 'application/json',
-
     }
 });

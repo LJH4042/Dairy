@@ -33,13 +33,12 @@ function Register(){
                     username: userState.idValue,
                     password: userState.passwordValue
                 })
-                if (response.status === 200){
+                if (response.status === 200 || response.status === 201){
                     alert("회원가입 되었습니다.")
                     goToLogin()
-                }else{
-                    alert("회원가입에 실패하셨습니다.")
                 }
             }catch(error){
+                alert('중복 아이디입니다.')
                 console.log("오류 발생: ", error)
             }
         }

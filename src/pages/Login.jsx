@@ -29,25 +29,23 @@ function Login(){
         event.preventDefault()
         await new Promise((r) => setTimeout(r, 1000))
 
-        const response = await createAxios.post("/auth/signin", {
-            username: userState.idValue,
-            password: userState.passwordValue
-        })
-        const result = await response.json()
-
-        if(response.status === 200){
-            setLoginCheck(false);
-            sessionStorage.setItem("token", result.accessToken)
-            sessionStorage.setItem("username", result.username)
-            alert("로그인에 성공하였습니다.")
-            goToMyPage()
-        }else{
-            setLoginCheck(true)
-            alert("로그인 혹은 비밀번호가 일치하지 않습니다.")
-            setUserState({
-                idValue: "",
-                passwordValue: ""
+        try{
+            const response = await createAxios.post("/auth/signin", {
+                username: userState.idValue,
+                password: userState.passwordValue
             })
+            if(response.status === 200 || response.status === 201){
+                alert("로그인에 성공하였습니다.")
+                goToMyPage()
+            }else{
+                alert("로그인 혹은 비밀번호가 일치하지 않습니다.")
+                setUserState({
+                    idValue: "",
+                    passwordValue: ""
+                })
+            }        
+        }catch(error){
+            console.log("오류 발생: ", error)
         }        
     }
 
