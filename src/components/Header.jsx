@@ -4,25 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 function Header(){
     const navigate = useNavigate()
-    const goToLogin = () => {
-        navigate("/Login")
-        window.location.replace("/login") //로그아웃 기능
-    }
+    const goToLogin = () => {navigate("/Login")}
     const goToRegister = () => {navigate("/Register")}
     const goToHome = () => {navigate("/")}
+    const goToMyPage = () => {navigate("/MyPage")}
 
     return(
         <div className="wrapper">
             <h1 className="title" onClick={goToHome}>Our Diary</h1>
-            {false ?
-                <nav>
-                    <p className="userName">username</p>
-                    <p className="routeP" onClick={goToLogin}>Logout</p>
-                </nav> : 
-                <nav>
-                    <p className="routeP" onClick={goToLogin}>Login</p>
-                    <p className="routeP" onClick={goToRegister}>Register</p>
-                </nav>}
+            <nav>
+                <p className="routeP" onClick={goToLogin}>Login</p>
+                <p className="routeP" onClick={goToRegister}>Register</p>
+                <p className="routeP" onClick={goToMyPage}>MyPage</p>
+            </nav>
         </div>
     )
 }

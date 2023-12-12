@@ -4,10 +4,12 @@ import "../css/Dairy.css"
 function Dairy({id, title, date, name, content, deleteDairy, editDairy}){
     const [editContent, setEditContent] = useState(content)
     const handleEditContent = (event) => setEditContent(event.target.value)
+    
     const [editBoolen, setEditBoolen] = useState(false)
     const clickEditBoolen = (event) => {
         setEditBoolen((editBoolen) => !editBoolen)
     }
+
     const handleEdit = () => {
         editDairy(id, editContent)
         setEditBoolen((editBoolen) => !editBoolen)

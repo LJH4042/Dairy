@@ -14,6 +14,7 @@ function DairyList(){
 
     const [dairyData, setDairytData] = useState( //todo리스트 빈 배열 생성
         JSON.parse(localStorage.getItem("todoList")) || []) //새로고침을 해도 localStorage에서 데이터를 가져와 값 유지
+    
     const idKey = useRef(0)
     const addDairy = (title, name ,content) => { //Dairy todo리스트 추가 함수 -> DairyWrite로 넘김
         const newDairy = { //새로 입력한 Dairy를 새로 지정
@@ -28,15 +29,15 @@ function DairyList(){
     }
 
     useEffect(() => {
+        localStorage.setItem("todoList", JSON.stringify(dairyData)) //JSON 자료형으로 변경
+    }, [dairyData]) //리스트 값을 새로 추가, 변경, 삭제할 때마다 localStorage에 저장
+
+    useEffect(() => {
         const localTodoList = JSON.parse(localStorage.getItem("todoList")) //원래의 자료형으로 변경
         if(localTodoList){
             setDairytData(localTodoList)
         }
     }, []) //localStorage에서 데이터를 가져와 초기 리스트를 설정
-
-    useEffect(() => {
-        localStorage.setItem("todoList", JSON.stringify(dairyData)) //JSON 자료형으로 변경
-    }, [dairyData]) //리스트 값을 새로 추가, 변경, 삭제할 때마다 localStorage에 저장
 
     const editDairy = (id, editContent) => {
         setDairytData(dairyData.map((data) => data.id === id ? {...data, content: editContent} : data)) //해당 ID의 content 값만 변경
@@ -46,6 +47,13 @@ function DairyList(){
         const newDairyList = dairyData.filter((data) => data.id !== id) //해당 ID를 제외하고 다른 ID들로만 새로운 배열 생성
         setDairytData(newDairyList)
     }
+
+    useEffect(() => {
+        if(localStorage.getItem('token') === null){
+            alert("로그인 후 이용해주세요.")
+            window.location.replace('http://localhost:3000/Login')
+        }
+    },[])
 
     return(
         <div>

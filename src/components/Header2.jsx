@@ -3,15 +3,13 @@ import "../css/Header.css"
 import { useNavigate } from "react-router-dom";
 
 function Header2(props){ 
-    const [username, setUsername] = useState("")
-
     const navigate = useNavigate()
-    const goToLogin = () => {navigate("/Login")}
+    const goToHome = () => {navigate("/")}
     const goToMyPage = () => {navigate("/MyPage")}
+    const goToLogin = () => {navigate("/Login")}
 
     const handleLogout = () => {
-        sessionStorage.removeItem("token")
-        sessionStorage.removeItem("username")
+        localStorage.removeItem("token")
         goToLogin()
     }
 
@@ -20,7 +18,7 @@ function Header2(props){
             <div className="wrapper">
                 <h1 className="title" onClick={goToMyPage}>Our Diary</h1>
                 <nav>
-                    <p className="userName">{username}</p>
+                    <p className="routeP" onClick={goToHome}>Home</p>
                     <p className="routeP" onClick={handleLogout}>Logout</p>
                 </nav>
             </div>

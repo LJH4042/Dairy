@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/Login.css"
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
@@ -9,12 +9,11 @@ function Login(){
         idValue: "",
         passwordValue: ""
     })
-    const [loginCheck, setLoginCheck] = useState(false)
 
     const handleLoginState = (event) => {
         setUserState({
-            ...userState, //loginState 객체를 나열 ([loginID, loginPWD]로 나열)
-            [event.target.name]: event.target.value //객체 이름을 찾아 그 값을 지정
+            ...userState, 
+            [event.target.name]: event.target.value 
         })
     }
 
@@ -22,13 +21,8 @@ function Login(){
     const goToRegister = () => {navigate("/Register")}
     const goToMyPage = () => {navigate("/MyPage")}
 
-    /*const realID = "jungbu" //더미 ID
-    const realPW = "1234" //더미 패스워드*/
-
     const handleLoginSubmit = async (event) => {
         event.preventDefault()
-        await new Promise((r) => setTimeout(r, 1000))
-
         try{
             const response = await createAxios.post("/auth/signin", {
                 username: userState.idValue,
@@ -37,6 +31,7 @@ function Login(){
             if(response.status === 200 || response.status === 201){
                 alert("로그인에 성공하였습니다.")
                 goToMyPage()
+                localStorage.setItem('token', response.data.accessToken)
             }else{
                 alert("로그인 혹은 비밀번호가 일치하지 않습니다.")
                 setUserState({
@@ -48,6 +43,12 @@ function Login(){
             console.log("오류 발생: ", error)
         }        
     }
+
+    useEffect(() => {
+        if(localStorage.getItem('token') !== null){
+            window.location.replace('http://localhost:3000/MyPage')
+        }
+    },[])
 
     return(
         <div>
